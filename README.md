@@ -21,8 +21,8 @@ Debug locally
 Run index.js with the env param `NODE_ENV=DEV` to run the server locally.
 
 
-> I've included an example test called ducksearch with a pretty basic functionality.
-http://localhost:3000/v1/ducksearch?query=hummus?result=3
+> I've included an example test called ducksearch with a pretty basic functionality:
+https://europe-west1-puppeteerfirebasesuite.cloudfunctions.net/puppeteer/v1/ducksearch?query=hummus&result=3
 
 
 
