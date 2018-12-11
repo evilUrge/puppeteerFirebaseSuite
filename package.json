@@ -1,0 +1,44 @@
+{
+  "name": "puppeteer-firebase-suite",
+  "version": "0.0.1",
+  "description": "Test in headless easy way in GCP Func",
+  "author": "Gilad Maoz<gilad.maoz@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evilUrge/puppeteerFirebaseSuite.git"
+  },
+  "keywords": [
+    "firebase",
+    "puppeteer",
+    "tests"
+  ],
+  "bugs": {
+    "url": "https://github.com/evilUrge/puppeteerFirebaseSuite/issues"
+  },
+  "homepage": "https://github.com/evilUrge/puppeteerFirebaseSuite#readme",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "deploy": "firebase deploy --only functions",
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "NODE_ENV=DEV node src/index.js",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "bunyan": "^1.8.12",
+    "express": "^4.16.3",
+    "firebase-functions": "^2.0.3",
+    "lodash": "^4.17.10",
+    "puppeteer": "^1.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-google": "^0.11.0",
+    "eslint-plugin-promise": "^4.0.0"
+  }
+}
