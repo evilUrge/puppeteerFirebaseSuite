@@ -34,7 +34,6 @@
     "express": "^4.16.3",
     "firebase-admin": "^6.3.0",
     "firebase-functions": "^2.1.0",
-    "lodash": "^4.17.10",
     "puppeteer": "^1.6.2"
   },
   "devDependencies": {

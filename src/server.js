@@ -1,5 +1,4 @@
 let fs = require('fs');
-let _ = require('lodash');
 let express = require('express');
 let bodyParser = require('body-parser');
 let bunyan = require('bunyan');
@@ -20,28 +19,37 @@ module.exports = init = (() => {
 
     let urls = (() => {
         /**
-         * Map all available tests to express route.
-         * @type {{productPage}|*}
+         * Map all available handlers to express route.
+         * @type {{handler}|*}
          */
         let RouteList = {};
         let baseHandlersFolder = `${utils.baseDir}/src/tests`;
-        _.forEach(fs.readdirSync(baseHandlersFolder), (fileName) => {
+        fs.readdirSync(baseHandlersFolder).forEach((fileName) => {
             if (fileName.includes('.js')) {
                 let HandlerImport = require(`${baseHandlersFolder}/${fileName}`);
-                _.forEach(Object.keys(HandlerImport), (handler) => RouteList[`v1/${handler}`] = HandlerImport[handler]);
+                Object.keys(HandlerImport).forEach((handler)=> {
+                    if (HandlerImport[handler].type && Array.isArray(HandlerImport[handler].type)){
+                        RouteList[handler] = HandlerImport[handler].type.map((method)=>{
+                            return { ...HandlerImport[handler], type:method}
+                        })
+                    } else {
+                        return RouteList[handler] = HandlerImport[handler]
+                    }
+                });
             }
         });
         return RouteList;
     })();
-    _.forOwn(urls, (handler, path) => {
+    Object.keys(urls).forEach((path)=>{
         /**
          *  Map all the available urls; function as a route mapper.
          */
         try {
-            server[handler.type ? handler.type : 'get'](`/${path}${handler.url? handler.url : ''}`, handler.exec ? handler.exec : handler);
+            const handlers = Array.isArray(urls[path]) ? urls[path] : [urls[path]];
+            handlers.forEach((handler)=>server[handler.type ? handler.type: 'get'](`/${path}${handler.url? handler.url : ''}`, handler.exec ? handler.exec : handler));
             logger.info(`/${path}`);
-        }
-        catch (e) {
+        } catch (e) {
+            console.log(e);
             logger.error(`Failed to register the following handler: ${path}`);
         }
     });
