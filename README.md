@@ -1,5 +1,8 @@
 ![puppteer logo](https://developers.google.com/web/tools/images/puppeteer.png)
 # puppeteerFirebaseSuite
+
+<a href="https://codeclimate.com/github/evilUrge/puppeteerFirebaseSuite/maintainability"><img src="https://api.codeclimate.com/v1/badges/8fe3ed510d9a495d7cad/maintainability" /></a>
+
 Run your Puppeteer test suite as a Firebase Function.
 
 The following is included an easy to extend base and an example test.
