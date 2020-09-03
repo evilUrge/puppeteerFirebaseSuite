@@ -34,7 +34,7 @@
     "express": "^4.16.3",
     "firebase-admin": "^6.3.0",
     "firebase-functions": "^2.1.0",
-    "puppeteer": "^1.6.2"
+    "puppeteer": "^1.13.0"
   },
   "devDependencies": {
     "eslint": "^5.10.0",
