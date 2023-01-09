@@ -32,8 +32,8 @@
     "body-parser": "^1.18.3",
     "bunyan": "^1.8.12",
     "express": "^4.16.3",
-    "firebase-admin": "^6.3.0",
-    "firebase-functions": "^2.1.0",
+    "firebase-admin": "^11.4.1",
+    "firebase-functions": "^4.1.1",
     "puppeteer": "^1.6.2"
   },
   "devDependencies": {
